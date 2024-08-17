@@ -19,5 +19,5 @@ MonoBehaviour:
   cardTheme: 0
   cardType: 0
   cardRarity: 0
-  cardFrame: {fileID: 0}
+  cardFrame: {fileID: 21300000, guid: 4d430069227cb4e37b1a6507cc148723, type: 3}
   cardID: ORG_FVR_004

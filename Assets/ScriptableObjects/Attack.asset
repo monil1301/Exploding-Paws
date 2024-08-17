@@ -20,5 +20,5 @@ MonoBehaviour:
   cardTheme: 0
   cardType: 0
   cardRarity: 0
-  cardFrame: {fileID: 0}
+  cardFrame: {fileID: 21300000, guid: ff780415ca1b241ff8e605cbd781ddcc, type: 3}
   cardID: ORG_ATK_001

@@ -19,5 +19,5 @@ MonoBehaviour:
   cardTheme: 0
   cardType: 0
   cardRarity: 0
-  cardFrame: {fileID: 0}
+  cardFrame: {fileID: 21300000, guid: 20e8b645c994f4ee7a376fba86a31fc0, type: 3}
   cardID: ORG_SKP_008

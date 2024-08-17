@@ -20,5 +20,5 @@ MonoBehaviour:
   cardTheme: 0
   cardType: 1
   cardRarity: 0
-  cardFrame: {fileID: 0}
+  cardFrame: {fileID: 21300000, guid: a912bfbe49d864cf183ccb21518c25e9, type: 3}
   cardID: ORG_DEF_002
