@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Extensions;
 using UnityEngine;
 
 public class GameInitializer : MonoBehaviour

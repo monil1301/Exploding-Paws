@@ -1,83 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour
+namespace Cards
 {
-    #region Referenced elements
-    [SerializeField] private Image frame;
-
-    [Header("Card BG")]
-    [SerializeField] private Image bg;
-
-    [Header("Top")]
-    [SerializeField] private Image topIcon;
-    [SerializeField] private TMP_Text topTitle, funText;
-
-    [Header("Center")]
-    [SerializeField] private Image centerImage;
-    [SerializeField] private TMP_Text description;
-
-    [Header("Bottom")]
-    [SerializeField] private Image bottomIcon;
-    [SerializeField] private TMP_Text bottomTitle;
-    #endregion
-
-    #region Private properties
-    private CardSO cardData;
-    #endregion
-
-    #region Public properties
-    // Indicates whether the card is facing up (true) or down (false)
-    public bool IsFacingUp { get; private set; }
-    #endregion
-
-    #region Public methods
-    // Initialize the card with data
-    public void Initialize(CardSO cardSO)
+    public class Card : MonoBehaviour
     {
-        // Return if the cardSO is null
-        if (cardSO == null)
-            return;
+        #region Referenced elements
+        [SerializeField] private Image frame;
 
-        // Assign cardSO to variable that can be accessed from all the methods in the file
-        cardData = cardSO;
+        [Header("Card BG")]
+        [SerializeField] private Image bg;
 
-        // Assign border of the card
-        if (cardData.cardFrame != null)
-            frame.sprite = cardData.cardFrame;
+        [Header("Top")]
+        [SerializeField] private Image topIcon;
+        [SerializeField] private TMP_Text topTitle, funText;
 
-        // Assign the icon of the card (both top left and bottom right)
-        if (cardData.cardIcon != null)
+        [Header("Center")]
+        [SerializeField] private Image centerImage;
+        [SerializeField] private TMP_Text description;
+
+        [Header("Bottom")]
+        [SerializeField] private Image bottomIcon;
+        [SerializeField] private TMP_Text bottomTitle;
+        #endregion
+
+        #region Private properties
+        private CardSo cardData;
+        #endregion
+
+        #region Public properties
+        // Indicates whether the card is facing up (true) or down (false)
+        public bool IsFacingUp { get; private set; }
+        #endregion
+
+        #region Public methods
+        // Initialize the card with data
+        public void Initialize(CardSo cardSo)
         {
-            topIcon.sprite = cardData.cardIcon;
-            bottomIcon.sprite = cardData.cardIcon;
+            // Return if the cardSO is null
+            if (cardSo == null)
+                return;
+
+            // Assign cardSO to variable that can be accessed from all the methods in the file
+            cardData = cardSo;
+
+            // Assign border of the card
+            if (cardData.cardFrame != null)
+                frame.sprite = cardData.cardFrame;
+
+            // Assign the icon of the card (both top left and bottom right)
+            if (cardData.cardIcon != null)
+            {
+                topIcon.sprite = cardData.cardIcon;
+                bottomIcon.sprite = cardData.cardIcon;
+            }
+
+            // Assign name of the card (both top and bottom)
+            topTitle.text = cardData.cardName.ToString();
+            bottomTitle.text = cardData.cardName.ToString();
+
+            // Assign the description of the card
+            description.text = cardData.cardActionDescription;
         }
 
-        // Assign name of the card (both top and bottom)
-        topTitle.text = cardData.cardName.ToString();
-        bottomTitle.text = cardData.cardName.ToString();
+        // Flip the card (Face Up to Face Down and vice versa)
+        public void FlipCard()
+        {
+            IsFacingUp = !IsFacingUp; // Toggle the facing state
+            UpdateCardVisual();
+        }
+        #endregion
 
-        // Assign the description of the card
-        description.text = cardData.cardActionDescription;
-    }
+        // Update the card's visual based on its facing state
+        private void UpdateCardVisual()
+        {
+            frame.gameObject.SetActive(IsFacingUp); // Frame is only for facing up card 
 
-    // Flip the card (Face Up to Face Down and vice versa)
-    public void FlipCard()
-    {
-        IsFacingUp = !IsFacingUp; // Toggle the facing state
-        UpdateCardVisual();
-    }
-    #endregion
-
-    // Update the card's visual based on its facing state
-    private void UpdateCardVisual()
-    {
-        frame.gameObject.SetActive(IsFacingUp); // Frame is only for facing up card 
-
-        // Get theme based face or back sprite based on the facing value
-        bg.sprite = IsFacingUp ? ThemeDictionary.GetCardFaceSprite(cardData.cardTheme) : ThemeDictionary.GetCardBackSprite(cardData.cardTheme);
+            // Get theme based face or back sprite based on the facing value
+            bg.sprite = IsFacingUp ? ThemeDictionary.GetCardFaceSprite(cardData.cardTheme) : ThemeDictionary.GetCardBackSprite(cardData.cardTheme);
+        }
     }
 }
