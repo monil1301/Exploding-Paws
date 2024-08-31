@@ -21,6 +21,7 @@ namespace Managers
         #region Private fields
         
         private readonly List<CardSo> deck = new();
+        private readonly List<CardSo> discardPile = new();
         
         #endregion
         
@@ -123,7 +124,47 @@ namespace Managers
             
             return topNCards;
         }
+
+        /**
+         * Add the card back to the deck
+         * <param name="cardSo">Card that needs to be put back in the deck</param>
+         * <param name="index">Index at which the card needs to be inserted</param>
+         * <returns>A boolean if the card was successfully put back in the deck or not</returns>
+         */
+        public bool PutBack(CardSo cardSo, int index = -1)
+        {
+            // Return false if the card is null OR index is more than the deck cards count
+            if (cardSo == null || index >= deck.Count) return false;
+
+            // If the index is default (-1) than make index as a random value between 0 and deck cards count
+            if (index == -1)
+            {
+                Random random = new();
+                index = random.Next(deck.Count);
+            }
+            
+            // put the card at index in the deck
+            deck.Insert(index, cardSo);
+            return true;
+        }
         
+        /**
+         * Adds the card to the discarded pile
+         * <param name="cardSo">Card to be discarded</param>
+         */
+        public void Discard(CardSo cardSo)
+        {
+            discardPile.Add(cardSo);
+        }
+
+        /**
+         * Gives the top card of the discarded pile
+         * <returns>Null if the list is empty; else the last card of the list</returns>
+         */
+        public CardSo LastDiscardedCard()
+        {
+            return discardPile.IsNullOrEmpty() ? null : discardPile[^1];
+        }
         #endregion
     }
 }

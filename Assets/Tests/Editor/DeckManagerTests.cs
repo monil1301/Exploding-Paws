@@ -10,6 +10,8 @@ namespace Tests.Editor
     {
         private DeckManager deckManager;
 
+        #region Setup
+        
         [SetUp]
         public void Setup()
         {
@@ -42,6 +44,8 @@ namespace Tests.Editor
             };
         }
 
+        #endregion
+        
         #region Draw Tests
 
         [Test]
@@ -162,6 +166,93 @@ namespace Tests.Editor
         
             // Assert
             Assert.IsNull(result);
+        }
+        #endregion
+
+        #region Discard Tests
+
+        [Test]
+        public void Discard_AddsCardToDiscardPile_WhenPileIsEmpty()
+        {
+            // Arrange
+            var card = deckManager.Draw();
+            
+            // Act
+            deckManager.Discard(card);
+            
+            // Assert
+            Assert.AreEqual(card, deckManager.LastDiscardedCard());
+        }
+
+        [Test]
+        public void Discard_AddsCardToDiscardPile_WhenPileIsNotEmpty()
+        {
+            // Arrange
+            deckManager.Discard(ScriptableObject.CreateInstance<CardSo>());
+            deckManager.Discard(ScriptableObject.CreateInstance<CardSo>());
+            var card = deckManager.Draw();
+            
+            // Act
+            deckManager.Discard(card);
+            
+            // Assert
+            Assert.AreEqual(card, deckManager.LastDiscardedCard());
+        }
+
+        #endregion
+
+        #region Put Back Tests
+
+        [Test]
+        public void PutBack_ReturnsFalse_WhenCardIsNull()
+        {
+            // Act
+            var wasPutBack = deckManager.PutBack(null);
+            
+            // Assert
+            Assert.IsFalse(wasPutBack);
+        }
+
+        [Test]
+        public void PutBack_ReturnsFalse_WhenIndexOutOfRange()
+        {
+            // Act
+            var wasPutBack = deckManager.PutBack(ScriptableObject.CreateInstance<CardSo>(), deckManager.Deck.Count);
+            
+            // Assert
+            Assert.IsFalse(wasPutBack);
+        }
+
+        [Test]
+        public void PutBack_ReturnsTrue_WhenIndexIsDefault()
+        {
+            // Arrange
+            var card = deckManager.Draw();
+            var deckSize = deckManager.Deck.Count;
+            
+            // Act
+            var wasPutBack = deckManager.PutBack(card);
+            
+            // Assert
+            Assert.IsTrue(wasPutBack);
+            Assert.AreEqual(deckSize + 1, deckManager.Deck.Count);
+        }
+
+        [Test]
+        public void PutBack_ReturnsTrue_WhenIndexIsSpecified()
+        {
+            // Arrange
+            var card = deckManager.Draw();
+            var deckSize = deckManager.Deck.Count;
+            
+            // Act
+            var indexToInsert = 1;
+            var wasPutBack = deckManager.PutBack(card, indexToInsert);
+            
+            // Assert
+            Assert.IsTrue(wasPutBack);
+            Assert.AreEqual(deckSize + 1, deckManager.Deck.Count);
+            Assert.AreEqual(card, deckManager.Deck[indexToInsert]);
         }
         #endregion
     }
