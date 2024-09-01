@@ -20,8 +20,8 @@ namespace Cards
 
       private void GenerateCardID()
       {
-         string themeAbbreviation = CardAbbreviation.GetCardThemeAbbreviations(cardTheme);
-         string nameAbbreviation = CardAbbreviation.GetCardNameAbbreviations(cardName);
+         var themeAbbreviation = CardAbbreviation.GetCardThemeAbbreviations(cardTheme);
+         var nameAbbreviation = CardAbbreviation.GetCardNameAbbreviations(cardName);
 
          cardID = $"{themeAbbreviation}_{nameAbbreviation}_{cardNumber:D3}";
       }
@@ -30,6 +30,11 @@ namespace Cards
       private void OnValidate()
       {
          GenerateCardID();
+      }
+
+      protected virtual void PlayCard()
+      {
+         
       }
    }
 }
