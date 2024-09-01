@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a86ec7106e0d4ea78f161391b308ea2, type: 3}
+  m_Script: {fileID: 11500000, guid: 14aa5f635ffb42b4af157b41eb32bcc2, type: 3}
   m_Name: Skip
   m_EditorClassIdentifier: 
   cardNumber: 8
@@ -19,5 +19,5 @@ MonoBehaviour:
   cardTheme: 0
   cardType: 0
   cardRarity: 0
-  cardFrame: {fileID: 21300000, guid: 20e8b645c994f4ee7a376fba86a31fc0, type: 3}
-  cardID: ORG_SKP_008
+  cardFrame: {fileID: 21300000, guid: eba7ba9de848040f0849a2fca844b762, type: 3}
+  cardID: 

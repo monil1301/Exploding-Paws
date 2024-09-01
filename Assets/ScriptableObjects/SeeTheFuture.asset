@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a86ec7106e0d4ea78f161391b308ea2, type: 3}
+  m_Script: {fileID: 11500000, guid: e893d0a5718944778171518a0271fb55, type: 3}
   m_Name: SeeTheFuture
   m_EditorClassIdentifier: 
   cardNumber: 6
@@ -19,5 +19,5 @@ MonoBehaviour:
   cardTheme: 0
   cardType: 0
   cardRarity: 0
-  cardFrame: {fileID: 0}
-  cardID: ORG_STF_006
+  cardFrame: {fileID: 21300000, guid: 20e8b645c994f4ee7a376fba86a31fc0, type: 3}
+  cardID: 

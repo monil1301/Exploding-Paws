@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a86ec7106e0d4ea78f161391b308ea2, type: 3}
+  m_Script: {fileID: 11500000, guid: b2673523b8724038a7d5ebc50643da7e, type: 3}
   m_Name: Shuffle
   m_EditorClassIdentifier: 
   cardNumber: 7
@@ -20,4 +20,4 @@ MonoBehaviour:
   cardType: 0
   cardRarity: 0
   cardFrame: {fileID: 21300000, guid: 792d2db96f8cb463ab8b0df86c3db637, type: 3}
-  cardID: ORG_SFL_007
+  cardID: 
