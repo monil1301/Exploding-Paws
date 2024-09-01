@@ -5,11 +5,13 @@ namespace Cards
     [CreateAssetMenu(menuName = "Card SO/Defuse Card SO")]
     public class DefuseCardSo: CardSo
     {
-        private void OnValidate()
+        protected override void OnValidate()
         {
             // Set the values directly in the script
             cardName = CardName.Defuse;
             cardType = CardType.Defensive;
+
+            base.OnValidate();
         }
 
         protected override void PlayCard()
