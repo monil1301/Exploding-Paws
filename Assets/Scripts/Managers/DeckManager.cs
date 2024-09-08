@@ -4,6 +4,7 @@ using System.Linq;
 using Cards;
 using Extensions;
 using UnityEngine;
+using UnityEngine.UI;
 using Utilities;
 using Logger = Utilities.Logger;
 using Random = System.Random;
@@ -15,6 +16,7 @@ namespace Managers
         #region Serialized fields
         
         [SerializeField] private List<CardSo> cardSOs;
+        [SerializeField] private Button drawButton;
 
         #endregion
         
@@ -36,6 +38,7 @@ namespace Managers
         private void Start()
         {
             CreateDeck(CardTheme.Original);
+            AddClickListeners();
         }
         
         #endregion
@@ -66,6 +69,8 @@ namespace Managers
                 // Adds a type of card for <count> times in the deck 
                 deck.AddRange(Enumerable.Repeat(cardSo, count));
             });
+
+            Debug.Log($"Deck created successfully with {deck.Count} cards");
         }
 
         #endregion
@@ -165,6 +170,20 @@ namespace Managers
         {
             return discardPile.IsNullOrEmpty() ? null : discardPile[^1];
         }
+        #endregion
+
+        #region Button Clicks
+
+        private void AddClickListeners()
+        {
+            drawButton.onClick.AddListener(OnDrawButtonClicked);
+        }
+
+        private void OnDrawButtonClicked()
+        {
+            Debug.Log("Deck Button Clicked");
+        }
+
         #endregion
     }
 }

@@ -24,7 +24,6 @@ namespace Cards
          var nameAbbreviation = CardAbbreviation.GetCardNameAbbreviations(cardName);
 
          cardID = $"{themeAbbreviation}_{nameAbbreviation}_{cardNumber:D3}";
-         Debug.Log("CardId : " + cardID);
       }
 
       // Automatically generate the card ID when the ScriptableObject is modified

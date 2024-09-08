@@ -13,7 +13,7 @@ namespace Utilities
                 { CardName.Defuse, 6},
                 { CardName.ExplodingPaws, 4},
                 { CardName.Favor, 4},
-                { CardName.Nope, 4},
+                { CardName.Nope, 5},
                 { CardName.SeeTheFuture, 5},
                 { CardName.Shuffle, 4},
                 { CardName.Skip, 4}
